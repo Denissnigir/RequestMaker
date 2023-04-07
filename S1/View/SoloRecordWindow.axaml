@@ -1,0 +1,195 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="620"
+        Width="1280"
+        Height="620"
+        x:Class="S1.View.SoloRecordWindow"
+        Title="SoloRecordWindow">
+    <Grid Margin="10"
+          Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <TextBlock Text="Форма записи на посещение мероприятия"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="28"/>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Name="EmployeeGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Margin="2">
+                    <StackPanel HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="Информация для пропуска"
+                                   Background="Orange"
+                                   HorizontalAlignment="Stretch"
+                                   TextAlignment="Center"
+                                   Foreground="White"/>
+                        <TextBlock Text="Срок действия заявки:"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Stretch"/>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="с:" VerticalAlignment="Center"/>
+                            <CalendarDatePicker VerticalAlignment="Center"
+                                                Name="StartDatePicker"/>
+                            <TextBlock Text="по:" VerticalAlignment="Center"/>
+                            <CalendarDatePicker VerticalAlignment="Center"
+                                                Name="EndDatePicker"/>
+                        </StackPanel>
+                        <TextBlock Text="Цель посещения:"
+                                   HorizontalAlignment="Stretch"
+                                   TextAlignment="Center"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Center"
+                                  VerticalContentAlignment="Center"
+                                  Name="PurposeCb"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Margin="2">
+                    <StackPanel HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="Принимающая сторона"
+                                   Background="Orange"
+                                   HorizontalAlignment="Stretch"
+                                   TextAlignment="Center"
+                                   Foreground="White"/>
+                        <TextBlock Text="Подразделение:"
+                                   HorizontalAlignment="Stretch"
+                                   TextAlignment="Center"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                                  Name="DepartmentCb"
+                                  SelectionChanged="DepartmentCb_OnSelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Text="ФИО:"
+                                   HorizontalAlignment="Stretch"
+                                   TextAlignment="Center"/>
+                        <ComboBox HorizontalAlignment="Stretch"
+                                  Name="EmployeeCb">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding GetFullName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2"
+              Margin="0, 10, 0, 0"
+              Name="GuestGrid">
+            <StackPanel HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Информация о посетителе"
+                           Background="Orange"
+                           HorizontalAlignment="Stretch"
+                           TextAlignment="Center"
+                           Foreground="White"/>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0, 0, 0, 0">
+                    <StackPanel Width="400">
+                        <TextBox Watermark="Фамилия"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding SecondName}"/>
+                        <TextBox Watermark="Имя"
+                                 Margin="0, 5,0 , 0"
+                                 Text="{Binding FirstName}"/>
+                        <TextBox Watermark="Отчество"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding ThirdName}"/>
+                        <MaskedTextBox Margin="0, 5, 0, 0"
+                                       Mask="+7 (000) 000-00-00"
+                                       Text="{Binding PhoneNumber}"/>
+                        <TextBox Watermark="Email"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding Mail}"/>
+                    </StackPanel>
+                    <StackPanel Width="400"
+                                Margin="5, 0, 0, 0">
+                        <TextBox Watermark="Организация"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding Company}"/>
+                        <TextBox Watermark="Примечание"
+                                 Margin="0, 5,0 , 0"
+                                 Text="{Binding Note}"/>
+                        <TextBox Watermark="Дата рождения"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding BirthDate}"/>
+                        <TextBox Watermark="Серия"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding PassportSeries}"/>
+                        <TextBox Watermark="Номер"
+                                 Margin="0, 5, 0, 0"
+                                 Text="{Binding PassportNumber}"/>
+                    </StackPanel>
+                    <StackPanel Width="450"
+                                Margin="5, 0, 0, 0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Stretch">
+                        <Image HorizontalAlignment="Center"
+                               Height="100"
+                               Width="100"/>
+                        <Button Content="Загрузить фото"
+                                HorizontalAlignment="Center"
+                                Click="UploadPhoto"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3"
+              Margin="0, 10, 0, 0">
+            <StackPanel HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <StackPanel Width="400">
+                    <TextBlock Text="Принимающая сторона"
+                               Background="Orange"
+                               HorizontalAlignment="Stretch"
+                               TextAlignment="Center"
+                               Foreground="White"/>
+                    <Button Content="Прикрепить файл"
+                            HorizontalAlignment="Center"
+                            Click="UploadPhoto"
+                            Margin="0, 5, 0, 0"/>
+                </StackPanel>
+                <Button Content="Очистить форму"
+                        Width="200"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Margin="100, 0, 0, 0"/>
+                <Button Content="Оформить заявку"
+                        Width="200"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Margin="10, 0, 0, 0"
+                        Click="NewRequest"/>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>
