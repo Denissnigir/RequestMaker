@@ -26,4 +26,11 @@ public partial class RecordTypeWindow : Window
         soloRecordWindow.Show();
         this.Close();
     }
+
+    private void ToGroupRecord(object? sender, RoutedEventArgs e)
+    {
+        GroupRecordWindow groupRecordWindow = new GroupRecordWindow();
+        groupRecordWindow.Show();
+        this.Close();
+    }
 }

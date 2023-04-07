@@ -19,6 +19,8 @@ public partial class ProContext : DbContext
 
     public virtual DbSet<Request> Requests { get; set; }
 
+    public virtual DbSet<RequestType> RequestTypes { get; set; }
+
     public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<Test> Tests { get; set; }
@@ -65,6 +67,7 @@ public partial class ProContext : DbContext
             entity.Property(e => e.Purpose)
                 .HasColumnType("character varying")
                 .HasColumnName("purpose");
+            entity.Property(e => e.RequestTypeId).HasColumnName("request_type_id");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.RequestEmployees)
                 .HasForeignKey(d => d.EmployeeId)
@@ -73,6 +76,24 @@ public partial class ProContext : DbContext
             entity.HasOne(d => d.Guest).WithMany(p => p.RequestGuests)
                 .HasForeignKey(d => d.GuestId)
                 .HasConstraintName("request_user_id_fk");
+
+            entity.HasOne(d => d.RequestType).WithMany(p => p.Requests)
+                .HasForeignKey(d => d.RequestTypeId)
+                .HasConstraintName("request_request_type_id_fk");
+        });
+
+        modelBuilder.Entity<RequestType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("request_type_pk");
+
+            entity.ToTable("request_type");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasColumnType("character varying")
+                .HasColumnName("name");
         });
 
         modelBuilder.Entity<Role>(entity =>

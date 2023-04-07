@@ -126,6 +126,7 @@ public partial class SoloRecordWindow : Window
                     requestData.Purpose = purposeCb.SelectedItem.ToString();
                     requestData.Id = Context._con.Requests.OrderBy(p => p.Id)
                         .Last().Id + 1;
+                    requestData.RequestTypeId = 1;
                     Context._con.Requests.Add(requestData);
                     Context._con.SaveChanges();
                 }
