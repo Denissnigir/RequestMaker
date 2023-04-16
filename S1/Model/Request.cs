@@ -19,9 +19,13 @@ public partial class Request
 
     public int? RequestTypeId { get; set; }
 
+    public int? RequestStatusId { get; set; }
+
     public virtual User? Employee { get; set; }
 
     public virtual User? Guest { get; set; }
+
+    public virtual RequestStatus? RequestStatus { get; set; }
 
     public virtual RequestType? RequestType { get; set; }
 }

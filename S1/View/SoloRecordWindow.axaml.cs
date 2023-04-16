@@ -172,4 +172,44 @@ public partial class SoloRecordWindow : Window
 
         return emptyCount;
     }
+
+    private void ClearData(object? sender, RoutedEventArgs e)
+    {
+        InitialClear(main);
+    }
+
+    private void InitialClear(Control element)
+    {
+        if (element is Grid grid)
+        {
+            foreach (var item in grid.Children)
+            {
+                EmptyChecker(item as Control);
+            }
+        }
+
+        if (element is StackPanel stack)
+        {
+            foreach (var item in stack.Children)
+            {
+                EmptyChecker(item as Control);
+            }
+        }
+
+        if (element is ComboBox comboBox)
+        {
+            if (comboBox.SelectedIndex > 0)
+            {
+                comboBox.SelectedIndex = 0;
+            }
+        }
+
+        if (element is TextBox box)
+        {
+            if (!string.IsNullOrWhiteSpace(box.Text))
+            {
+                box.Text = "";
+            }
+        }
+    }
 }

@@ -179,7 +179,7 @@ public partial class GroupRecordWindow : Window
                 Context._con.Users.Add(guestData);
                 Context._con.SaveChanges();
                 guests.Add(guestData);
-                employeeDg.Items = guests;
+                employeeDg.Items = guests.ToList();
         }
         else
         {

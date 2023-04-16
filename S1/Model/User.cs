@@ -37,6 +37,10 @@ public partial class User
 
     public int? DepartmentId { get; set; }
 
+    public string? EmployeeCode { get; set; }
+
+    public bool? IsBlacklisted { get; set; }
+
     public virtual Department? Department { get; set; }
 
     public virtual ICollection<Request> RequestEmployees { get; } = new List<Request>();

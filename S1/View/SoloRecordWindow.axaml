@@ -181,7 +181,8 @@
                         Width="200"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        Margin="100, 0, 0, 0"/>
+                        Margin="100, 0, 0, 0"
+                        Click="ClearData"/>
                 <Button Content="Оформить заявку"
                         Width="200"
                         HorizontalContentAlignment="Center"

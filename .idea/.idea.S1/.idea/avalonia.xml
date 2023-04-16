@@ -5,6 +5,7 @@
       <map>
         <entry key="S1/MainWindow.axaml" value="S1/S1.csproj" />
         <entry key="S1/View/AuthWindow.axaml" value="S1/S1.csproj" />
+        <entry key="S1/View/GroupRecordWindow.axaml" value="S1/S1.csproj" />
         <entry key="S1/View/RecordTypeWindow.axaml" value="S1/S1.csproj" />
         <entry key="S1/View/SoloRecordWindow.axaml" value="S1/S1.csproj" />
       </map>

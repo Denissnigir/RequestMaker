@@ -19,6 +19,8 @@ public partial class ProContext : DbContext
 
     public virtual DbSet<Request> Requests { get; set; }
 
+    public virtual DbSet<RequestStatus> RequestStatuses { get; set; }
+
     public virtual DbSet<RequestType> RequestTypes { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -67,6 +69,7 @@ public partial class ProContext : DbContext
             entity.Property(e => e.Purpose)
                 .HasColumnType("character varying")
                 .HasColumnName("purpose");
+            entity.Property(e => e.RequestStatusId).HasColumnName("request_status_id");
             entity.Property(e => e.RequestTypeId).HasColumnName("request_type_id");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.RequestEmployees)
@@ -77,9 +80,29 @@ public partial class ProContext : DbContext
                 .HasForeignKey(d => d.GuestId)
                 .HasConstraintName("request_user_id_fk");
 
+            entity.HasOne(d => d.RequestStatus).WithMany(p => p.Requests)
+                .HasForeignKey(d => d.RequestStatusId)
+                .HasConstraintName("request_request_status_id_fk");
+
             entity.HasOne(d => d.RequestType).WithMany(p => p.Requests)
                 .HasForeignKey(d => d.RequestTypeId)
                 .HasConstraintName("request_request_type_id_fk");
+        });
+
+        modelBuilder.Entity<RequestStatus>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("request_status_pk");
+
+            entity.ToTable("request_status");
+
+            entity.HasIndex(e => e.Id, "request_status_id_index");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasColumnType("character varying")
+                .HasColumnName("name");
         });
 
         modelBuilder.Entity<RequestType>(entity =>
@@ -142,9 +165,13 @@ public partial class ProContext : DbContext
                 .HasColumnType("character varying")
                 .HasColumnName("company");
             entity.Property(e => e.DepartmentId).HasColumnName("department_id");
+            entity.Property(e => e.EmployeeCode)
+                .HasColumnType("character varying")
+                .HasColumnName("employee_code");
             entity.Property(e => e.FirstName)
                 .HasColumnType("character varying")
                 .HasColumnName("first_name");
+            entity.Property(e => e.IsBlacklisted).HasColumnName("is_blacklisted");
             entity.Property(e => e.Login)
                 .HasColumnType("character varying")
                 .HasColumnName("login");
