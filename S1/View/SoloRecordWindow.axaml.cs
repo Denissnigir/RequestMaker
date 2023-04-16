@@ -212,4 +212,11 @@ public partial class SoloRecordWindow : Window
             }
         }
     }
+
+    private void GoBack(object? sender, RoutedEventArgs e)
+    {
+        AuthWindow authWindow = new AuthWindow();
+        authWindow.Show();
+        this.Close();
+    }
 }

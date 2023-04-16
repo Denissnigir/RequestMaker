@@ -34,8 +34,8 @@
 
     <ItemGroup>
       <None Remove="Resources\User.jpg" />
-      <Resource Include="Resources\User.jpg">
+      <AvaloniaResource Include="Assets\User.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Resource>
+      </AvaloniaResource>
     </ItemGroup>
 </Project>

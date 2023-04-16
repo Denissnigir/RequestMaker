@@ -11,9 +11,11 @@
         <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <TextBox Name="LoginTb"
-                     Watermark="Login"
-                     Width="200"/>
+                <Image Source="../Assets/User.jpg"
+                       Height="100"/>
+                <TextBox Name="LoginTb"
+                         Watermark="Login"
+                         Width="200"/>
             <TextBox Name="PasswordTb"
                      Watermark="Password"
                      Width="200"
