@@ -26,6 +26,7 @@
 /home/astra/.nuget/packages/avalonia.win32/0.10.18/lib/netstandard2.0/Avalonia.Win32.dll
 /home/astra/.nuget/packages/avalonia.x11/0.10.18/lib/netstandard2.0/Avalonia.X11.dll
 /home/astra/.nuget/packages/avalonia.avaloniaedit/0.10.0/lib/netstandard2.0/AvaloniaEdit.dll
+/home/astra/.nuget/packages/bcrypt.net/0.1.0/lib/net35/BCrypt.Net.dll
 /home/astra/.nuget/packages/markdown.avalonia.tight/0.10.11/lib/netcoreapp2.0/ColorTextBlock.Avalonia.dll
 /home/astra/.nuget/packages/harfbuzzsharp/2.8.2.1-preview.108/lib/net6.0/HarfBuzzSharp.dll
 /home/astra/.nuget/packages/jetbrains.annotations/10.3.0/lib/netstandard1.0/JetBrains.Annotations.dll

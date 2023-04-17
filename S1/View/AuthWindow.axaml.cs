@@ -19,8 +19,6 @@ namespace S1.View;
 
 public partial class AuthWindow : Window
 {
-    private TextBox login;
-    private TextBox password;
     public static User curUser { get; set; }
     public AuthWindow()
     {
@@ -28,22 +26,31 @@ public partial class AuthWindow : Window
 #if DEBUG
         this.AttachDevTools();
 #endif
-    }
+        foreach (var VARIABLE in Context._con.Users.Where(i => i.Password != null).ToList())
+        {
+            var old_password = VARIABLE.Password;
+            VARIABLE.Password = BCrypt.Net.BCrypt.HashPassword(old_password);
+        }
 
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
-        login = this.FindControl<TextBox>("LoginTb");
-        password = this.FindControl<TextBox>("PasswordTb");
+        Context._con.SaveChanges();
     }
 
     private async void Auth(object? sender, RoutedEventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(login.Text) && !string.IsNullOrWhiteSpace(password.Text))
+        if (!string.IsNullOrWhiteSpace(LoginTb.Text) && !string.IsNullOrWhiteSpace(PasswordTb.Text))
         {
             var user = Context._con.Users.Include(p => p.Role)
                 .Include(p => p.Department)
-                .FirstOrDefault(p => p.Login == login.Text && p.Password == password.Text);
+                .FirstOrDefault(p => p.Login == LoginTb.Text);
+            if (BCrypt.Net.BCrypt.Verify(PasswordTb.Text, user.Password))
+            {
+                // Успешная проверка
+            }
+            else
+            {
+                
+                // Не прошёл проверку 
+            }
             if (user != null)
             {
                 curUser = user;

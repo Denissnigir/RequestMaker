@@ -11,6 +11,7 @@
           "Avalonia": "0.10.18",
           "Avalonia.Desktop": "0.10.18",
           "Avalonia.Diagnostics": "0.10.18",
+          "BCrypt.Net": "0.1.0",
           "MessageBox.Avalonia": "2.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.0-preview.2.23128.3",
           "Newtonsoft.Json": "13.0.3",
@@ -259,6 +260,14 @@
           "lib/netstandard2.0/Avalonia.X11.dll": {
             "assemblyVersion": "0.10.18.0",
             "fileVersion": "0.10.18.0"
+          }
+        }
+      },
+      "BCrypt.Net/0.1.0": {
+        "runtime": {
+          "lib/net35/BCrypt.Net.dll": {
+            "assemblyVersion": "0.1.4141.31969",
+            "fileVersion": "0.1.0.0"
           }
         }
       },
@@ -1960,6 +1969,13 @@
       "sha512": "sha512-9w4X7y6vZ+0l4Vpj0/TM2s4vwjAcY9N72mX91c5KP0vaMo4Yol7XUb/Ygekkk3tRb9nlvEx+3oywXnZfPYQ2Og==",
       "path": "avalonia.x11/0.10.18",
       "hashPath": "avalonia.x11.0.10.18.nupkg.sha512"
+    },
+    "BCrypt.Net/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sST2w361Dxt9GGMfpOTiK50wXGV64Ybb1hiX3xjEWnhVYZNF43NuySGwADJa7X1R+bA53NsFR+tuDxcYiJeIOA==",
+      "path": "bcrypt.net/0.1.0",
+      "hashPath": "bcrypt.net.0.1.0.nupkg.sha512"
     },
     "HarfBuzzSharp/2.8.2.1-preview.108": {
       "type": "package",

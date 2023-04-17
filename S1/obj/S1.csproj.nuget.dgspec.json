@@ -51,6 +51,10 @@
               "target": "Package",
               "version": "[0.10.18, )"
             },
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
             "MessageBox.Avalonia": {
               "target": "Package",
               "version": "[2.0.2, )"
