@@ -37,6 +37,16 @@ public partial class AuthWindow : Window
 
     private async void Auth(object? sender, RoutedEventArgs e)
     {
+        try
+        {
+        new System.Net.Mail.MailAddress(LoginTb.Text);
+
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
+            return;
+        }
         if (!string.IsNullOrWhiteSpace(LoginTb.Text) && !string.IsNullOrWhiteSpace(PasswordTb.Text))
         {
             var user = Context._con.Users.Include(p => p.Role)
